@@ -1,0 +1,25 @@
+{
+  "name": "polymerSheetsComponent",
+  "homepage": "https://github.com/cdhumphreys/polymerSheetsComponent",
+  "authors": [
+    "Carl Humphreys <chumphreys@opera.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "iron-elements": "PolymerElements/iron-elements#^1.0.9",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7",
+    "webcomponentsjs": "^0.7.21",
+    "google-sheets": "GoogleWebComponents/google-sheets#^1.0.5",
+    "google-chart": "GoogleWebComponents/google-chart#^1.0.4"
+  }
+}

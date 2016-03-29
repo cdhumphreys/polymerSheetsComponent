@@ -1,0 +1,102 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="bower_components/google-chart/google-chart.html">
+<link rel="import" href="bower_components/google-sheets/google-sheets.html">
+
+
+
+<link rel="import" href="selection-box.html">
+<link rel="import" href="sort-box.html">
+
+<dom-module id="organised-sheet">
+
+  <template>
+    <style>
+
+      /* CSS rules for your element */
+   /*    .container {
+      @apply(--layout-horizontal);
+      @apply(--layout-justified);
+      height: 120px;
+      background-color: gray;
+    }
+    .container div {
+      @apply(--layout-flex);
+    }
+    .child1 {
+      @apply(--layout-self-start);
+      background-color: red;
+    }
+    .child2 {
+      @apply(--layout-self-center);
+      background-color: blue;
+    }
+    .child3 {
+      @apply(--layout-self-end);
+      background-color: green;
+    }
+    .child4 {
+      @apply(--layout-self-stretch);
+      background-color: yellow;
+    }*/
+    </style>
+  
+    <!-- local DOM for your element -->
+
+  <!--   <div class="container">
+      <div class="child1">Alpha</div>
+      <div class="child2">Beta</div>
+      <div class="child3">Gamma</div>
+      <div class="child4">Delta</div>
+    </div> -->
+
+    <div class="container">
+      <div>
+        <selection-box></selection-box>
+      </div>
+
+      <div>
+        <sort-box></sort-box>
+      </div>
+
+      <div>
+        <google-sheets
+          key={{key}}
+          tab-id={{tab-id}}
+          published={{published}}
+          rows={{rows}}
+        ></google-sheets>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    // element registration
+    Polymer({
+      is: "organised-sheet",
+
+      // add properties and methods on the element's prototype
+
+      properties: {
+        // declare properties for the element's public API
+        greeting: {
+          type: String,
+          value: "Hello!"
+        },
+        published: {
+          type: Boolean,
+          value: false
+        },
+        key: {
+          type: String
+        },
+        tabId: {
+          type: Number,
+          value: 0
+        }
+      }
+    });
+  </script>
+
+</dom-module>
