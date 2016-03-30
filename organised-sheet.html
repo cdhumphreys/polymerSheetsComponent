@@ -75,20 +75,23 @@
 
       <div>
 
-        <template is="dom-bind">
+        <template>
 
           <google-sheets
-            key="1n8NtLEQH0uoisHSDbOxnUz9x4c0fh8IQcnqnLD2w-Bk" tab-id="1" rows="{{rows}}"
-            client-id="...">
+            id="mySheet"
+            key="1n8NtLEQH0uoisHSDbOxnUz9x4c0fh8IQcnqnLD2w-Bk" 
+            tab-id="1"
+            on-change="sheetDataChange" 
+            published
+            >
           </google-sheets>
 
           <google-chart 
               id="sheetChart"              
               type="column"
-              data="{{rows}}"
-
-
-              >
+              rows="{{rows}}"
+              on-tap="_tapHandler"
+          >
            
           </google-chart>
 
@@ -103,20 +106,38 @@
     Polymer({
       is: "organised-sheet",
 
+      listeners: {
+        'tap': '_tapHandler'
+      }, 
       // add properties and methods on the element's prototype
 
       properties: {
         // declare properties for the element's public API
-        
+        rows: {
+          type: Array,
+          notify: true
+        }
 
-      },    
+      }, 
+       
       ready: function(){
           this.series = [];
-          for (var i = 0; i < this.rows.length; i++) {
-            console.log(rows[i]);
+          var mySheet = this.getContentChildren('#mySheet');
+          console.log('ready');
+          // this.listen(this.$.mySheet, 'google-sheet-data', 'rowChange');
+          for (var i = 0; i < mySheet.length; i++) {
+            console.log(mySheet.rows[i]);
           }   
       },
-      
+      rowChange: function() {
+        console.log('new data!');
+      },
+      sheetDataChange: function() {
+        console.log('sheet data change');
+      },
+      _tapHandler: function() {
+        console.log('chart tapped');
+      }      
       
     });
   </script>
