@@ -14,6 +14,19 @@
   <template>
     <style>
 
+    #sheetChart {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      -webkit-transform: translate(-50%,0);
+         -moz-transform: translate(-50%,0);
+          -ms-transform: translate(-50%,0);
+           -o-transform: translate(-50%,0);
+              transform: translate(-50%,0);
+      background-color: rgba(0,0,0,0.2);
+
+    }
+
       /* CSS rules for your element */
    /*    .container {
       @apply(--layout-horizontal);
@@ -53,20 +66,34 @@
 
     <div class="container">
       <div>
-        <selection-box></selection-box>
+        <selection-box series={{series}} id="select"></selection-box>
       </div>
 
       <div>
-        <sort-box></sort-box>
+        <sort-box categories={{sheetRows}}></sort-box>
       </div>
 
       <div>
-        <google-sheets
-          key={{key}}
-          tab-id={{tab-id}}
-          published={{published}}
-          rows={{rows}}
-        ></google-sheets>
+
+        <template is="dom-bind">
+
+          <google-sheets
+            key="1n8NtLEQH0uoisHSDbOxnUz9x4c0fh8IQcnqnLD2w-Bk" tab-id="1" rows="{{rows}}"
+            client-id="...">
+          </google-sheets>
+
+          <google-chart 
+              id="sheetChart"              
+              type="column"
+              data="{{rows}}"
+
+
+              >
+           
+          </google-chart>
+
+        </template>
+
       </div>
     </div>
   </template>
@@ -80,22 +107,17 @@
 
       properties: {
         // declare properties for the element's public API
-        greeting: {
-          type: String,
-          value: "Hello!"
-        },
-        published: {
-          type: Boolean,
-          value: false
-        },
-        key: {
-          type: String
-        },
-        tabId: {
-          type: Number,
-          value: 0
-        }
-      }
+        
+
+      },    
+      ready: function(){
+          this.series = [];
+          for (var i = 0; i < this.rows.length; i++) {
+            console.log(rows[i]);
+          }   
+      },
+      
+      
     });
   </script>
 

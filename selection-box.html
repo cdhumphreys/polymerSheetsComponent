@@ -16,11 +16,11 @@
   
   </style>
     <div>
-      <h4>Choose Countries To Display:</h4>
+      <h4>Data Series:</h4>
       <hr>
       <paper-dialog-scrollable>     
         <paper-listbox class="dropdown-content"  multi> 
-        <template is="dom-repeat" items="{{legend}}">
+        <template is="dom-repeat" items="{{series}}">
           <paper-checkbox checked noink index=[[item.index]] value=[[item.name]]>[[item.name]]</paper-checkbox>
         </template> 
         </paper-listbox>
@@ -34,7 +34,7 @@
       Polymer({
         is: 'selection-box',
         ready: function() {
-          this.legend = [];          
+          this.series = [];          
         }
       });
     })();
